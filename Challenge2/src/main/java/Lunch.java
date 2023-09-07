@@ -1,11 +1,11 @@
 import javax.swing.JOptionPane;
-
 import convertirMoneda.function;
-
+import convertirTemperatura.functionTemperatura;
 
 
 public class Lunch {
 	static function monedas = new function();
+	static functionTemperatura temperatura = new functionTemperatura();
 	
 	public static void main(String[] args) {
 		
@@ -39,12 +39,23 @@ public class Lunch {
 			
 			break;
 		case "Conversor De Temperatura":
+			String input1 =JOptionPane.showInputDialog(null,"Ingresa la temperatura a convertir: ");
 			
+				if(validarInput(input1)) {
+					double Tinput = Double.parseDouble(input1);
+					temperatura.convertirTemperaturas(Tinput);
+					
+					int respuesta = JOptionPane.showConfirmDialog(null, "Deseas realizar otra operacion?");
+					if(JOptionPane.OK_OPTION == respuesta) {
+						System.out.println("Selecciona opcion...");
+					}else {
+						flag=false;
+						JOptionPane.showMessageDialog(null, "Programa terminado...");
+					}
+					
+				}
 			break;
-		default:
-			break;
-		
-		
+				
 		}
 		}
 	}
